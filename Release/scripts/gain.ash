@@ -129,7 +129,7 @@ string __gain_version = "1.1.1";
 boolean __gain_setting_confirm = false;
 
 //we don't use the pirate items because mafia doesn't acquire them properly - if pirate tract is 301 in the mall, it'll try to get it from the store, and fail
-boolean [item] __modify_blocked_items = $items[M-242,snake,sparkler,Mer-kin strongjuice,Mer-kin smartjuice,Mer-kin cooljuice,pirate tract,pirate pamphlet,pirate brochure,elven suicide capsule,ghost dog chow];
+boolean [item] __modify_blocked_items = $items[M-242,snake,sparkler,pirate tract,pirate pamphlet,pirate brochure,elven suicide capsule,ghost dog chow, bottle of bubbles];
 boolean [skill] __modify_blocked_skills;
 boolean [effect] __blocked_effects;
 boolean [effect] __fixed_blocked_effects = $effects[cowrruption,Visions of the Deep Dark Deeps];
@@ -149,6 +149,10 @@ else if (my_class() == $class[pastamancer])
 {
 	foreach t in $thralls[]
 		__modify_blocked_skills[t.skill] = true;
+}
+
+foreach sk in $skills[Aug. 6th: Fresh Breath Day!, Aug. 7th: Lighthouse Day!, Cincho: Party Soundtrack] {
+		__modify_blocked_skills[sk] = true;
 }
 
 boolean [effect] __limited_effects;
@@ -185,6 +189,7 @@ void initialiseMutuallyExclusiveEffects()
 	__mutually_exclusive_effect_sets[__mutually_exclusive_effect_sets.count()] = $effects[Snarl of the Timberwolf,Scowl of the Auk,Stiff Upper Lip,Patient Smile,Quiet Determination,Arched Eyebrow of the Archmage,Wizard Squint,Quiet Judgement,Icy Glare,Wry Smile,Disco Leer,Disco Smirk,Suspicious Gaze,Knowing Smile,Quiet Desperation];
 	__mutually_exclusive_effect_sets[__mutually_exclusive_effect_sets.count()] = $effects[Song of the North,Song of Slowness,Song of Starch,Song of Sauce,Song of Bravado];
 	__mutually_exclusive_effect_sets[__mutually_exclusive_effect_sets.count()] = $effects[purple tongue,green tongue,orange tongue,red tongue,blue tongue];
+	__mutually_exclusive_effect_sets[__mutually_exclusive_effect_sets.count()] = $effects[Puissant Pressure, Perspicacious Pressure, Pulchritudinous Pressure, Possessive Pressure, Perceptive Pressure, Proficient Pressure, Pneumatic];
 	
 	foreach key in __mutually_exclusive_effect_sets
 	{
